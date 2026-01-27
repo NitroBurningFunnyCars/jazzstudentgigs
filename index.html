@@ -1,118 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hire a High School Jazz Combo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jazz Student Gigs</title>
 
   <style>
+    :root {
+      --deep-navy:   #0D1B2A;
+      --steel:       #1B263B;
+      --cool-blue:   #415A77;
+      --soft-gray:   #E0E1DD;
+      --white:       #FFFFFF;
+      --highlight:   #6EC1E4;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #fdfdfd;
-      color: #222;
-      line-height: 1.6;
+      background: var(--deep-navy);
+      color: var(--soft-gray);
+      line-height: 1.7;
     }
 
-    header {
-      position: relative;
+    /* --- HEADER LOGO --- */
+    .logo {
+      width: 240px;
+      display: block;
+      margin: 20px auto 10px auto;
     }
 
-    /* Hamburger menu */
+    /* --- Hamburger Button --- */
     .menu-btn {
-      position: absolute;
+      position: fixed;
       top: 20px;
       left: 20px;
-      font-size: 28px;
+      font-size: 32px;
       cursor: pointer;
-      color: white;
-      z-index: 2000;
+      z-index: 3000;
+      color: var(--soft-gray);
+      background: rgba(13, 27, 42, 0.6);
+      padding: 6px 12px;
+      border-radius: 4px;
     }
 
-    /* Sidebar */
+    /* --- Sidebar --- */
     .sidebar {
       height: 100%;
       width: 0;
       position: fixed;
-      z-index: 1500;
+      z-index: 2500;
       top: 0;
       left: 0;
-      background-color: #111;
+      background-color: var(--steel);
       overflow-x: hidden;
-      transition: 0.3s;
-      padding-top: 60px;
+      transition: width 0.3s ease;
+      padding-top: 80px;
+      border-right: 2px solid var(--cool-blue);
+
+
+
     }
 
     .sidebar a {
       padding: 12px 24px;
       text-decoration: none;
       font-size: 18px;
-      color: #f1f1f1;
+      color: var(--soft-gray);
       display: block;
     }
 
     .sidebar a:hover {
-      background: #333;
+      background: var(--cool-blue);
+      color: var(--white);
     }
 
+    /* --- Hero Image --- */
     .hero {
       width: 100%;
       max-height: 420px;
       object-fit: cover;
+      display: block;
+      filter: brightness(85%);
     }
 
+    /* --- Main Content --- */
     .container {
       max-width: 750px;
       margin: 0 auto;
       padding: 20px;
     }
 
+    h1, h2 {
+      color: var(--white);
+      letter-spacing: 0.5px;
+      margin-top: 0.6em;
+    }
+
+    a {
+      color: var(--highlight);
+    }
+
+    /* --- Contact Box --- */
     .contact-box {
-      border: 1px solid #ddd;
+      border: 1px solid var(--cool-blue);
       padding: 20px;
       border-radius: 8px;
-      background-color: #fafafa;
+      background: rgba(27, 38, 59, 0.7);
       margin: 30px 0;
     }
   </style>
-
-  <script>
-    function openMenu() {
-      document.getElementById("sidebar").style.width = "250px";
-    }
-    function closeMenu() {
-      document.getElementById("sidebar").style.width = "0";
-    }
-  </script>
 </head>
 
 <body>
 
-<header>
-  <span class="menu-btn" onclick="openMenu()">☰</span>
+<!-- Hamburger Button -->
+<span class="menu-btn" onclick="openMenu()">☰</span>
 
-  <div id="sidebar" class="sidebar">
-    <a href="javascript:void(0)" onclick="closeMenu()">✕ Close</a>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="#">Photos (coming soon)</a>
-    <a href="#">Previous Gigs (coming soon)</a>
-  </div>
+<!-- Sidebar Menu -->
+<div id="sidebar" class="sidebar" onclick="event.stopPropagation()">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="#">Photos (coming soon)</a>
+  <a href="#">Previous Gigs (coming soon)</a>
+</div>
 
-  <img class="hero" src="images/jazz1.jpg" alt="Student musicians performing">
-</header>
+<img src="images/logo.svg" alt="Jazz Student Gigs Logo" class="logo" />
 
+<!-- Image of someone playing
+<img class="hero" src="images/jazz1.jpg" alt="Student musicians performing" />
+-->
+
+<!-- Main Content -->
 <div class="container">
   <h1>Jazz Student Gigs</h1>
   <p>
-    Jazz Student Gigs is an independent, volunteer run contact point where community
+    Jazz Student Gigs is an independent, volunteer-run contact point where community
     members can share performance opportunities with student jazz musicians.
   </p>
 
   <p>
     We do <strong>not</strong> book gigs, employ musicians, or manage performance arrangements.
-    Messages sent to the coordinator are forwarded to interested families, who handle
-    all decisions, communication, scheduling, and payments independently.
+    Messages sent to the coordinator are forwarded to interested families, who handle all
+    communication, scheduling, and payments independently.
   </p>
 
   <h2>Interested in reaching student musicians?</h2>
@@ -120,9 +150,34 @@
 
   <div class="contact-box">
     <p><strong>Email:</strong> jazzstudentgigs@gmail.com</p>
-    <p><strong>Instagram:</strong> <a href="https://instagram.com/jazzstudentgigs">@jazzstudentgigs</a></p>
+    <p><strong>Instagram:</strong>
+      <a href="https://instagram.com/jazzstudentgigs">@jazzstudentgigs</a>
+    </p>
   </div>
 </div>
+
+<!-- Menu Script -->
+<script>
+  function openMenu() {
+    let sidebar = document.getElementById("sidebar");
+    sidebar.style.width = "250px";
+    document.addEventListener("click", closeOnOutside);
+  }
+
+  function closeMenu() {
+    let sidebar = document.getElementById("sidebar");
+    sidebar.style.width = "0";
+    document.removeEventListener("click", closeOnOutside);
+  }
+
+  function closeOnOutside(event) {
+    let sidebar = document.getElementById("sidebar");
+    if (!sidebar.contains(event.target) &&
+        event.target !== document.querySelector(".menu-btn")) {
+      closeMenu();
+    }
+  }
+</script>
 
 </body>
 </html>

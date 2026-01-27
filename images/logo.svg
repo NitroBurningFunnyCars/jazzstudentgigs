@@ -1,0 +1,9 @@
+<svg width="420" height="120" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="120" fill="#0D1B2A"/>
+  <rect x="15" y="15" width="90" height="90" fill="#415A77"/>
+  <circle cx="60" cy="60" r="28" fill="#6EC1E4"/>
+  <text x="150" y="72" font-size="34" fill="#E0E1DD"
+        font-family="Arial" letter-spacing="3">
+    JAZZ STUDENT GIGS
+  </text>
+</svg>
